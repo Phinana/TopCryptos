@@ -35,4 +35,10 @@ every 10 minutes.
 
 4 => You will need to create account and change its is_admin statue 0 to 1 if you want to access admin routes.
 
-5 => You need auth key, do not forget to login first. You gonna need to send this key to every request, or you can't access any route.
+5 => You need auth key, do not forget to login first. You are gonna need to send this key to every request, or you can't access any route.
+
+
+
+## Postman
+
+https://documenter.getpostman.com/view/28032516/2s946cha27
