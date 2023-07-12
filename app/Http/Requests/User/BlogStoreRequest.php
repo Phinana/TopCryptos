@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Http\Requests\User;
+
+use App\Models\Crypto;
+use Illuminate\Foundation\Http\FormRequest;
+
+class BlogStoreRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
+     */
+    public function rules(): array
+    {
+        return [
+            'title' => 'required',
+            'body' => 'required',
+            'crypto_id' => [
+                'nullable',
+                function ($attribute, $value, $fail) {
+                    $crypto = Crypto::find($value);
+
+                    if (!$crypto) {
+                        $fail('Invalid crypto_id. The specified crypto does not exist.');
+                    }
+                },
+            ],
+        ];
+    }
+}
